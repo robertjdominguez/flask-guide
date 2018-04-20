@@ -11,3 +11,17 @@ Ensure these tasks are completed by the time we meet. Any questions, email me.
 - [ ] Install Atom (we'll use this as our editor due to some helpful packages)
 - [ ] Install Atom packages
 - [ ] Configure Atom packages
+
+
+### Code-along
+As we work through our session together, check items off like the example below.
+
+- [x] I know how to check things off!
+- [ ] imports
+- [ ] endpoint built for index
+- [ ] initial server test
+- [ ] endpoints built for: articles/headlines, article, login, logout, profile, create_article
+- [ ] db created; tables for users, articles
+- [ ] login authentication logic created
+- [ ] sample user created and test passed
+- [ ] sample article posted and passed test
