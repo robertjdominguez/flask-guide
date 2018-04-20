@@ -21,7 +21,7 @@ Follow the instructions below to set up your development environment for complet
    $ pip install -r requirements.txt
    ```
 
-3. Install Atom and install the packages via the following commands:
+3. Install Atom and install the Atom packages via the following commands...these will make our development process much smoother:
 
     ```Shell
     $ apm install atom-beautify
@@ -35,8 +35,8 @@ Follow the instructions below to set up your development environment for complet
     $ apm install todo-show
     ```
 
-  NB: a dependency for the python-autopep8 package will be the `autopep8` library for Python...install it by running
-    `$ pip install autopep8`
+    NB: a dependency for the python-autopep8 package will be the `autopep8` library for Python...install it by running
+      `$ pip install autopep8`
 
 4. Install [ngrok](https://ngrok.com/download) -- we'll use this later to tunnel a web-server and test on mobile.
 

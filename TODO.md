@@ -5,9 +5,9 @@ We'll start by learning how to create a basic flask app that includes all of our
 
 ### Pre-Meeting
 Ensure these tasks are completed by the time we meet. Any questions, email me.
-[ ] Clone repo
-[ ] Install libraries
-[ ] Install ngrok
-[ ] Install Atom (we'll use this as our editor due to some helpful packages)
-[ ] Install Atom packages
-[ ] Configure Atom packages
+- [ ] Clone repo
+- [ ] Install libraries
+- [ ] Install ngrok
+- [ ] Install Atom (we'll use this as our editor due to some helpful packages)
+- [ ] Install Atom packages
+- [ ] Configure Atom packages
