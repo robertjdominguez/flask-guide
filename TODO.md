@@ -29,3 +29,4 @@ As we work through our session together, check items off like the example below.
 - [ ] login authentication logic created
 - [ ] sample user created and test passed
 - [ ] sample article posted and test passed
+- [ ] mobile test using ngrok
