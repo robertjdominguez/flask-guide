@@ -38,6 +38,8 @@ Follow the instructions below to set up your development environment for complet
     NB: a dependency for the python-autopep8 package will be the `autopep8` library for Python...install it by running
       `$ pip install autopep8`
 
+    Also, in order for the python-autopep8 package to run correctly, you'll need to go to the package's settings and check the "Format On Save" box. After this, every time you save a Python file, the package will parse it and format your code to the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
+
 4. Install [ngrok](https://ngrok.com/download) -- we'll use this later to tunnel a web-server and test on mobile.
 
 5. Check out the TODO.md file. We'll use this as a task list to help us stay organized and move at the right pace.
