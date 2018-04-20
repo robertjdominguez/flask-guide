@@ -9,11 +9,13 @@ By following along with this project and our lesson(s), you'll walk away with a 
 Follow the instructions below to set up your development environment for completing this project.
 
 1. [CLONE/FORK]? this repo:
-⋅⋅⋅```Shell
-⋅⋅⋅$ git clone https://github.com/robertjdominguez/flask-guide
-⋅⋅⋅```
+
+   ```Shell
+   $ git clone https://github.com/robertjdominguez/flask-guide
+   ```
 
 2. Install required libraries
-⋅⋅⋅```Python
-⋅⋅⋅$ pip install -r requirements.txt
-⋅⋅⋅```
+
+   ```Python   
+   $ pip install -r requirements.txt
+   ```
