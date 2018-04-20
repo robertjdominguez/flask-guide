@@ -21,4 +21,6 @@ Follow the instructions below to set up your development environment for complet
    $ pip install -r requirements.txt
    ```
 
-3. Check out the TODO.md file. We'll use this as a task list to help us stay organized and move at the right pace.
+3. Install [ngrok](https://ngrok.com/download) -- we'll use this later to tunnel a web-server and test on mobile.
+
+4. Check out the TODO.md file. We'll use this as a task list to help us stay organized and move at the right pace.
