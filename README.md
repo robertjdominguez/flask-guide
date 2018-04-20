@@ -23,7 +23,6 @@ Follow the instructions below to set up your development environment for complet
 
 3. Install Atom and install the packages via the following commands:
 
-<<<<<<< HEAD
   ```Shell
   $ apm install atom-beautify
   $ apm install atom-bootstrap4
@@ -41,6 +40,3 @@ Follow the instructions below to set up your development environment for complet
 4. Install [ngrok](https://ngrok.com/download) -- we'll use this later to tunnel a web-server and test on mobile.
 
 5. Check out the TODO.md file. We'll use this as a task list to help us stay organized and move at the right pace.
-=======
-4. Check out the `TODO.md` file. We'll use this as a task list to help us stay organized and move at the right pace.
->>>>>>> origin/master
