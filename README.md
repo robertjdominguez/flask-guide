@@ -21,7 +21,7 @@ Follow the instructions below to set up your development environment for complet
    $ pip install -r requirements.txt
    ```
 
-3. Install Atom and install the Atom packages via the following commands...these will make our development process much smoother:
+3. Install [Atom](https://atom.io/) and install these Atom packages via the following commands...these will make our development process much smoother:
 
     ```Shell
     $ apm install atom-beautify
