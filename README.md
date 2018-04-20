@@ -23,19 +23,20 @@ Follow the instructions below to set up your development environment for complet
 
 3. Install Atom and install the packages via the following commands:
 
-  ```Shell
-  $ apm install atom-beautify
-  $ apm install atom-bootstrap4
-  $ apm install atom-jinja2
-  $ apm install autocomplete-python
-  $ apm install install busy-signal
-  $ apm install emmet
-  $ apm install python-indent
-  $ apm install python-autopep8
-  $ apm install todo-show
-  ```
+    ```Shell
+    $ apm install atom-beautify
+    $ apm install atom-bootstrap4
+    $ apm install atom-jinja2
+    $ apm install autocomplete-python
+    $ apm install install busy-signal
+    $ apm install emmet
+    $ apm install python-indent
+    $ apm install python-autopep8
+    $ apm install todo-show
+    ```
 
-  NB: a dependency for the python-autopep8 package will be the `autopep8` library for Python...install it by running `$ pip install autopep8`
+  NB: a dependency for the python-autopep8 package will be the `autopep8` library for Python...install it by running
+    `$ pip install autopep8`
 
 4. Install [ngrok](https://ngrok.com/download) -- we'll use this later to tunnel a web-server and test on mobile.
 
