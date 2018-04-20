@@ -17,11 +17,15 @@ Ensure these tasks are completed by the time we meet. Any questions, email me.
 As we work through our session together, check items off like the example below.
 
 - [x] I know how to check things off!
+- [ ] create sub-directories
+- [ ] create `app.py`
 - [ ] imports
 - [ ] endpoint built for index
 - [ ] initial server test
 - [ ] endpoints built for: articles/headlines, article, login, logout, profile, create_article
-- [ ] db created; tables for users, articles
+- [ ] create models for users, articles
+- [ ] create db
+- [ ] create `forms.py` to house web-forms
 - [ ] login authentication logic created
 - [ ] sample user created and test passed
-- [ ] sample article posted and passed test
+- [ ] sample article posted and test passed
