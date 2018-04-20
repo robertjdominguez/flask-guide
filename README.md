@@ -8,7 +8,8 @@ By following along with this project and our lesson(s), you'll walk away with a 
 ## Instructions
 Follow the instructions below to set up your development environment for completing this project.
 
-1. [CLONE/FORK]? this repo:
+### Before we meet
+1. Clone this repo:
 
    ```Shell
    $ git clone https://github.com/robertjdominguez/flask-guide
@@ -16,6 +17,8 @@ Follow the instructions below to set up your development environment for complet
 
 2. Install required libraries
 
-   ```Python   
+   ```Shell   
    $ pip install -r requirements.txt
    ```
+
+3. Check out the TODO.md file. We'll use this as a task list to help us stay organized and move at the right pace.
