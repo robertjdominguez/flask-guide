@@ -46,11 +46,11 @@ The first thing we need to do is actually create the application as flask object
 An endpoint is essentially a URL, or a web service endpoint. There are different protocols (HTTP requests) we can call such as `GET` and `POST` in order to have different functions triggered. The simplest is our index's endpoint which we'll just assign `(/)`:
 
   ```Python
-  @app.route('/', methods=['GET'])
+  @app.route('/')
   def index():
       return render_template('index.html')
   ```
-What we're saying here is when a user navigates to the url ending with `/`, regardless of the request method `GET` request, our server will just return `index.html`. Each endpoint gets its own function - in the example above, it's `index()` that is called whenever the request is made. Later on, we'll look at triggering different blocks of code depending on the type of request that's made.
+What we're saying here is when a user navigates to the url ending with `/`, regardless of the request method, our server will just return `index.html`. Each endpoint gets its own function - in the example above, it's `index()` that is called whenever the request is made. Later on, we'll look at triggering different blocks of code depending on the type of request that's made.
 
 ## Run the Server
 Couldn't be easier with flask. All we do is utilize the `.run` method for the application object, feed it the port (which is an optional argument, btw), and we'll have an up-running-server:
