@@ -50,6 +50,7 @@ An endpoint is essentially a URL, or a web service endpoint. There are different
   def index():
       return render_template('index.html')
   ```
+What we're saying here is when a user navigates to the url ending with `/`, regardless of the request method `GET` request, our server will just return `index.html`. Each endpoint gets its own function - in the example above, it's `index()` that is called whenever the request is made. Later on, we'll look at triggering different blocks of code depending on the type of request that's made.
 
 ## Run the Server
 Couldn't be easier with flask. All we do is utilize the `.run` method for the application object, feed it the port (which is an optional argument, btw), and we'll have an up-running-server:
@@ -58,7 +59,9 @@ Couldn't be easier with flask. All we do is utilize the `.run` method for the ap
   app.run(port=port)
   ```
 
-If we went to our terminal and tried to run the server, we'd have an issue when trying to navigate to `localhost:5000` because we haven't actually built the html page that's trying to be served to us. Before running the server for the first time, create an `index.html` file in your `templates` folder. Now, if you run the following command, you should get some output that let's you know your server is up and listening on port `5000`:
+If we went to our terminal and tried to run the server, we'd have an issue when trying to navigate to `localhost:5000` because we haven't actually built the html page that's trying to be served to us; we'd get a `500` response code. If you haven't made yourself familiar with HTTP response codes, (this)[https://pbs.twimg.com/media/B50dCAKIEAAP0NQ.jpg] is helpful and from the perspective of the server/developer.
+
+Before running the server for the first time, create an `index.html` file in your `templates` folder. Now, if you run the following command, you should get some output that let's you know your server is up and listening on port `5000`:
 
   ```Shell
   python app.py
