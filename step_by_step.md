@@ -34,7 +34,7 @@ At this point, we're ready to start building the application (server) itself. St
 I know this seems like a lot, but these libraries eliminate the need for us to write a lot of our own code that would just be boilerplate/reinventing the wheel. Like this [cartoon](https://plus.google.com/114528699166048052030/posts/QnTABxy8rrw) illustrates, these open source libraries make it incredibly easy to develop our own applications.
 
 ## Initialize the Application
-The first thing we need to do is actually create the application as flask object:
+The first thing we need to do is actually create the application as a flask object:
 
   ```Python
   # Init the application
@@ -56,6 +56,36 @@ What we're saying here is when a user navigates to the url ending with `/`, rega
 Couldn't be easier with flask. All we do is utilize the `.run` method for the application object, feed it the port (which is an optional argument, btw), and we'll have an up-running-server:
 
   ```Python
+  app.run(port=port)
+  ```
+
+At this point, our whole `app.py` would look like this:
+
+  ```Python
+  from flask import Flask, flash, redirect, render_template, request, session, abort, url_for, flash, jsonify
+  from flask_sqlalchemy import SQLAlchemy
+  from wtforms import *
+  from flask_wtf import FlaskForm
+  from flask_wtf.file import FileField
+  from wtforms.validators import InputRequired, Email, Length
+  from flask_bootstrap import Bootstrap
+  from werkzeug.security import generate_password_hash, check_password_hash
+  from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+  from datetime import *
+  from random import *
+  import time
+  from functools import wraps
+
+  # Init the application
+  app = Flask(__name__)
+  port = 5000
+
+  # Routes
+  @app.route('/')
+  def index():
+      return render_template('index.html')
+
+  # Run the server
   app.run(port=port)
   ```
 
