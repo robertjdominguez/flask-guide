@@ -59,7 +59,7 @@ Couldn't be easier with flask. All we do is utilize the `.run` method for the ap
   app.run(port=port)
   ```
 
-If we went to our terminal and tried to run the server, we'd have an issue when trying to navigate to `localhost:5000` because we haven't actually built the html page that's trying to be served to us; we'd get a `500` response code. If you haven't made yourself familiar with HTTP response codes, (this)[https://pbs.twimg.com/media/B50dCAKIEAAP0NQ.jpg] is helpful and from the perspective of the server/developer.
+If we went to our terminal and tried to run the server, we'd have an issue when trying to navigate to `localhost:5000` because we haven't actually built the html page that's trying to be served to us; we'd get a `500` response code. If you haven't made yourself familiar with HTTP response codes, [this](https://pbs.twimg.com/media/B50dCAKIEAAP0NQ.jpg) is helpful and from the perspective of the server/developer.
 
 Before running the server for the first time, create an `index.html` file in your `templates` folder. Now, if you run the following command, you should get some output that let's you know your server is up and listening on port `5000`:
 
