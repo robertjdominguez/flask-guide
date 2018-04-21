@@ -33,6 +33,47 @@ At this point, we're ready to start building the application (server) itself. St
 
 I know this seems like a lot, but these libraries eliminate the need for us to write a lot of our own code that would just be boilerplate/reinventing the wheel. Like this [cartoon](https://plus.google.com/114528699166048052030/posts/QnTABxy8rrw) illustrates, these open source libraries make it incredibly easy to develop our own applications.
 
+## Initialize the Application
+The first thing we need to do is actually create the application as flask object:
+
+  ```Python
+  # Init the application
+  app = Flask(__name__)
+  port = 5000
+  ```
+
+## First Endpoint
+An endpoint is essentially a URL, or a web service endpoint. There are different protocols (HTTP requests) we can call such as `GET` and `POST` in order to have different functions triggered. The simplest is our index's endpoint which we'll just assign `(/)`:
+
+  ```Python
+  @app.route('/', methods=['GET'])
+  def index():
+      return render_template('index.html')
+  ```
+
+## Run the Server
+Couldn't be easier with flask. All we do is utilize the `.run` method for the application object, feed it the port (which is an optional argument, btw), and we'll have an up-running-server:
+
+  ```Python
+  app.run(port=port)
+  ```
+
+If we went to our terminal and tried to run the server, we'd have an issue when trying to navigate to `localhost:5000` because we haven't actually built the html page that's trying to be served to us. Before running the server for the first time, create an `index.html` file in your `templates` folder. Now, if you run the following command, you should get some output that let's you know your server is up and listening on port `5000`:
+
+  ```Shell
+  python app.py
+
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+  ```
+
+  If you open a web-browser and navigate to `http://127.0.0.1:5000/` you should get a response that reads something like the following, but with the current date/time:
+
+  ```Shell
+  127.0.0.1 - - [21/Apr/2018 12:49:54] "GET / HTTP/1.1" 200 -
+  ```
+
+
+
 ## STOPPING Here
 Before we actually start building the app during our code-along, I'm going to stop the guide. I'd like for us to work together before I put the rest of this walkthrough up for your reference later on. See you guys on Thursday.
 
