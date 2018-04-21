@@ -64,7 +64,7 @@ If we went to our terminal and tried to run the server, we'd have an issue when 
 Before running the server for the first time, create an `index.html` file in your `templates` folder. Now, if you run the following command, you should get some output that let's you know your server is up and listening on port `5000`:
 
   ```Shell
-  python app.py
+  $ python app.py
 
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
   ```
