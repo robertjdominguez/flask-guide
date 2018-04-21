@@ -31,7 +31,7 @@ At this point, we're ready to start building the application (server) itself. St
   from functools import wraps
   ```
 
-I know this seems like a lot, but these libraries eliminate the need for us to write a lot of our own code that would just be boilerplate/reinventing the wheel. Like this [cartoon](https://plus.google.com/114528699166048052030/posts/QnTABxy8rrw) illustrates, these open source libraries make incredibly easy to develop our own applications.
+I know this seems like a lot, but these libraries eliminate the need for us to write a lot of our own code that would just be boilerplate/reinventing the wheel. Like this [cartoon](https://plus.google.com/114528699166048052030/posts/QnTABxy8rrw) illustrates, these open source libraries make it incredibly easy to develop our own applications.
 
 ## STOPPING Here
 Before we actually start building the app during our code-along, I'm going to stop the guide. I'd like for us to work together before I put the rest of this walkthrough up for your reference later on. See you guys on Thursday.
