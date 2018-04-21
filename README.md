@@ -29,6 +29,7 @@ Follow the instructions below to set up your development environment for complet
     $ apm install atom-jinja2
     $ apm install autocomplete-python
     $ apm install install busy-signal
+    $ apm install flask-snippets
     $ apm install emmet
     $ apm install python-indent
     $ apm install python-autopep8
