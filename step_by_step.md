@@ -343,3 +343,12 @@ def login():
 
     return render_template('login.html', **locals())
 ```
+
+Now, if we run our server and "sign in" using any email address, we should get a response back in the terminal while we're redirected to the index:
+
+```Shell
+127.0.0.1 - - [22/Apr/2018 17:35:30] "GET /login HTTP/1.1" 200 -
+Success signing in user@email.com
+127.0.0.1 - - [22/Apr/2018 17:35:39] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [22/Apr/2018 17:35:39] "GET / HTTP/1.1" 200 -
+```
