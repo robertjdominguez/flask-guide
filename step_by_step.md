@@ -114,7 +114,7 @@ Before we actually start building the app during our code-along, I'm going to st
 
 
 ## Organizing our application -- TODO TOGETHER
-I like to map out what my app will look like by using comments. We've got a block under a comment called "`routes`" already. Let's use that to organize the rest of our application's structure. The `flask-snippets` package that we installed helps speed up our development and keeps our syntax clean and consistent. To build an endpoint with this package, start typing `froute` and then hit enter. When you do the endpoint below `/` will be in your code:
+I like to map out what my app will look like by using comments. We've got a block under a comment called "`Routes`" already. Let's use that to organize the rest of our application's structure. The `flask-snippets` package that we installed helps speed up our development and keeps our syntax clean and consistent. To build an endpoint with this package, start typing `froute` and then hit enter. When you do, the endpoint found below `/` will be in your code:
 
   ```Python
   # Routes
@@ -129,7 +129,7 @@ I like to map out what my app will look like by using comments. We've got a bloc
       return render_template('expression')
   ```
 
-Let's have our next endpoint be a page where users can find all the articles that have been written:
+Let's have our next endpoint be a page where users can find all the articles that have been written. Change the templated endpoint from `froute` to the following:
 
   ```Python
   @app.route('/articles')
@@ -141,3 +141,36 @@ Let's have our next endpoint be a page where users can find all the articles tha
 Notice, I included a `TODO` comment; I did this to remind myself to come back and build this page - and others - after I've mapped out my routes. In Atom, comments are easy: just start typing `todo` and then hit enter. If your file already has an extension (i.e., .py, .js, etc.) then Atom knows what type of syntax is necessary for a comment (e.g., `#` or `//`). The `todo-show` package that we installed earlier allows us to see all of a project's `TODO` tags. Depending on your OS, you can bring this up different ways. This is a great tool to help keep us organized.
 
 Now, go ahead and create the rest of your endpoints (articles/headlines, article, login, logout, profile, create_article) and I'll help you.
+
+## Endpoints
+Flask makes it easy to build a consistent appearance for our application. We're going to use [Bootstrap](https://getbootstrap.com/) for our site's appearance. The first thing we need to create is a file called `base.html`. This file will serve as our foundation and will contain our CSS link, jQuery, and other "every page" elements that each page on our site will need.
+
+Navigate to the `templates` directory and `$ touch base.html` to create the file. From there, when using Atom - and since you included the `emmet` package, doctypes like HTML are a snap to create. Just open the file in the editor and start typing `html`. When you hit enter, the skeleton of an HTML file will be generated. Even better, because of the Bootstrap 4 package we're utilizing, there's an option that will pop up titled `htmlb4` that will go ahead and take care of needed information. It should look like the code below:
+
+```HTML
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
+From here, let's delete the line with the `h1` tag and put the following in its place:
+
+```HTML
+<br>
+{% block content %} <!-- This will be dynamic content depending on the page --> {% endblock %}
+<br>
+```
