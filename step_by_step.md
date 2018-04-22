@@ -237,9 +237,11 @@ We're going to use SQLite3 to create this database. There's a great library that
 ```Python
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
+app.secret_key = "random_large_int"
+Bootstrap(app)
 ```
 
-Now, let's create the users table:
+We've also utilized a secret key so we can use CSRF (Cross-site Request Forgery) tokens and we've passed in our app as an argument to the Bootstrap function. Now, let's create the users table:
 
 ```Python
 class Users(UserMixin, db.Model):
@@ -252,7 +254,7 @@ class Users(UserMixin, db.Model):
 You'll notice a couple of arguments that have been included when defining the class of `Users`. First, we've included `UserMixin` which comes from the `flask_login` library - this will allow us some extended functionality when dealing with a user. Second, there's `db.Model` - this just let's our application know that this class is a table in our db.
 
 ### Create the DB
-We're going to create the db using Python. In your `app.py` file, comment out the last line that runs the application:
+We're going to create the db using Python. In your `app.py` file, comment-out the last line that runs the application:
 
 ```Python
 # app.run(port=port)
@@ -267,4 +269,77 @@ $ python
 >>> exit()
 ```
 
-You should now see a new .db file named `database.db` inside your `main` folder. Congrats!
+You should now see a new .db file named `database.db` inside your `main` folder. Congrats! Don't forget to go back and uncomment the last line of `app.py`.
+
+## Creating a Form
+For the most part, users will use a form to enter data into your application. The first form we need is a login form so authenticated users can access certain portions of your site.
+
+Start by creating a new file in the `main` folder called `forms.py`. This file will house the logic for all our forms. There's a few necessary imports, so copy and paste the following:
+
+```Python
+from wtforms import *
+from flask_wtf import FlaskForm
+from wtforms.validators import InputRequired, Email, Length
+from flask_wtf.file import FileField
+```
+
+Each form is set up as a class that inherits from `FlaskForm`. Our form for logging in should look like this:
+
+```Python
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[InputRequired(), Length(min=5, max=80)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=80)])
+```
+
+Now that the form has been created, let's include it in a new page called `login.html` inside our `templates` folder. Remember, the top of the file should "extend" from the `base.html` file, so it should look something like this as we start:
+
+```HTML
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block content %} {% import "bootstrap/wtf.html" as wtf %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Login</h1>
+  </div>
+</div>
+{% endblock %}
+
+```
+
+Notice, there's an additional line for an HTML file that has a form included; this allows the Jinja2 engine to read the forms we're going to include. After the jumbotron (which is a Bootstrap element) we should place our login form; however, it will look different from a typical HTML form:
+
+```HTML
+<div class="container" id="login">
+<!-- This is where we create the form for the login -->
+  <form class="form sign-in" , method="POST" action="/login">
+    {{ form.hidden_tag() }} {{ wtf.form_field(form.email) }}
+    <!-- Password field -->
+    {{ wtf.form_field(form.password) }}
+    <!-- Submit and forgot buttons -->
+    <input class="btn btn-primary" type="submit" value="Login">
+  </form>
+</div>
+```
+
+Finally, we need to include the form in our `app.py` because the templating engine will be expecting a form, but it doesn't know which one. So, make our `/login` endpoint look like this:
+
+```Python
+@app.route('/login')
+def login():
+    form = LoginForm()
+
+    return render_template('login.html', **locals())
+```
+
+If we try to run our server, we'll be able to see a login page. However, if we try to submit the form, we're going to get thrown an error of the server not being able to handle the request because we haven't defined the methods for this page. What we need to do is manipulate our `/login` route a bit to handle a `POST` request when the form is submitted. This takes two steps:
+
+```Python
+@app.route('/login', methods=['GET', 'POST']) # Step 1 = Methods
+def login():
+    form = LoginForm()
+
+    if request.method == 'POST': # Step 2 = If POST is the type of request
+        print('Success signing in {}'.format(form.email.data))
+        return redirect(url_for('index'))
+
+    return render_template('login.html', **locals())
+```
