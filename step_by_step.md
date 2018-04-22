@@ -143,7 +143,7 @@ Notice, I included a `TODO` comment; I did this to remind myself to come back an
 Now, go ahead and create the rest of your endpoints (articles/headlines, article, login, logout, profile, create_article) and I'll help you.
 
 ## Endpoints
-Flask makes it easy to build a consistent appearance for our application. We're going to use [Bootstrap](https://getbootstrap.com/) for our site's appearance. The first thing we need to create is a file called `base.html`. This file will serve as our foundation and will contain our CSS link, jQuery, and other "every page" elements that each page on our site will need.
+Flask makes it easy to build a consistent appearance for our application. We're going to use [Bootstrap](https://getbootstrap.com/) for our site's appearance. The first thing we need to create is a file called `base.html`. This file will serve as our foundation and will contain our CSS link, jQuery, and other "every page" elements that each page on our site will need. The syntax is going to look a little weird - especially when we start utilizing loops inside of HTML - but this is a templating engine called [Jinja2](http://jinja.pocoo.org/).
 
 Navigate to the `templates` directory and `$ touch base.html` to create the file. From there, when using Atom - and since you included the `emmet` package, doctypes like HTML are a snap to create. Just open the file in the editor and start typing `html`. When you hit enter, the skeleton of an HTML file will be generated. Even better, because of the Bootstrap 4 package we're utilizing, there's an option that will pop up titled `htmlb4` that will go ahead and take care of needed information. It should look like the code below:
 
@@ -173,4 +173,60 @@ From here, let's delete the line with the `h1` tag and put the following in its 
 <br>
 {% block content %} <!-- This will be dynamic content depending on the page --> {% endblock %}
 <br>
+```
+
+### Creating a Page
+For every page that we want to feed off of the `base.html` file, we need to include the following lines in the HTML file:
+
+```HTML
+{% extends "base.html" %} {% block title %} <!-- Title can be typed here --> {% endblock %} {% block content %}
+
+<!-- body goes here -->
+
+{% endblock %}
+```
+
+As you can see, we can dynamically include information like the page's title, and - for each page - the body without having to rewrite everything that would be boilerplate on each page. Let's set up a title page that looks like this:
+
+```HTML
+{% extends "base.html" %} {% block title %} Home Page {% endblock %} {% block content %}
+
+<h1>What's up, dude?</h1>
+
+{% endblock %}
+```
+
+Go head and build the pages you need based on the endpoints you've written.
+
+### Dynamic Content
+Using Jinja, we can start to feed in dynamic information to a page's view utilizing the `app.py` file we've created. Let's "personalize" our `index.html` file; in `app.py` declare a variable `name` and assign your name to its value:
+
+```Python
+@app.route('/')
+def index():
+
+    name = 'Rob'
+
+    return render_template('index.html')
+```
+
+Now, let's edit the `index.html` page and replace "dude" with your name:
+
+```HTML
+{% extends "base.html" %} {% block title %} Home Page {% endblock %} {% block content %}
+
+<h1>What's up, {{ name }}?</h1>
+
+{% endblock %}
+```
+
+If you try to run this as it's written, you're not going to get any dynamic content. When we return the `index.html` file, we need to be sure to pass local variables through as an argument. At times, this can be a lot of content; luckily, we can just use the following to catch all local variables and pass them through as arguments:
+
+```Python
+@app.route('/')
+def index():
+
+    name = 'Rob'
+
+    return render_template('index.html', **locals())
 ```
