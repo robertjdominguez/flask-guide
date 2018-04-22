@@ -230,3 +230,41 @@ def index():
 
     return render_template('index.html', **locals())
 ```
+
+## Building the DB
+We're going to use SQLite3 to create this database. There's a great library that we'll be using called `flask_sqlalchemy` that will make interacting with this db really simple. Before the db is actually created, we're going to create the different tables which will act as different classes. First, we need to configure the location of the db and then define our db variable by creating a SQLAlchemy object of our application:
+
+```Python
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
+```
+
+Now, let's create the users table:
+
+```Python
+class Users(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(15))
+    first_name = db.Column(db.String(25))
+    last_name = db.Column(db.String(25))
+    password = db.Column(db.String(80))
+```
+You'll notice a couple of arguments that have been included when defining the class of `Users`. First, we've included `UserMixin` which comes from the `flask_login` library - this will allow us some extended functionality when dealing with a user. Second, there's `db.Model` - this just let's our application know that this class is a table in our db.
+
+### Create the DB
+We're going to create the db using Python. In your `app.py` file, comment out the last line that runs the application:
+
+```Python
+# app.run(port=port)
+```
+
+This will prevent the server from launching when we import the db object into the Python CLI. Next, open Terminal and type in the following:
+
+```Shell
+$ python
+>>> from app import db
+>>> db.create_all()
+>>> exit()
+```
+
+You should now see a new .db file named `database.db` inside your `main` folder. Congrats!
