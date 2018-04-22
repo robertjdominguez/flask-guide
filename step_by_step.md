@@ -107,7 +107,37 @@ Before running the server for the first time, create an `index.html` file in you
 
 
 
-## STOPPING Here
+## STOP Here
 Before we actually start building the app during our code-along, I'm going to stop the guide. I'd like for us to work together before I put the rest of this walkthrough up for your reference later on. See you guys on Thursday.
 
 -RD
+
+
+## Organizing our application -- TODO TOGETHER
+I like to map out what my app will look like by using comments. We've got a block under a comment called "`routes`" already. Let's use that to organize the rest of our application's structure. The `flask-snippets` package that we installed helps speed up our development and keeps our syntax clean and consistent. To build an endpoint with this package, start typing `froute` and then hit enter. When you do the endpoint below `/` will be in your code:
+
+  ```Python
+  # Routes
+
+
+  @app.route('/')
+  def index():
+      return render_template('index.html')
+
+  @app.route('path')
+  def func_name(foo):
+      return render_template('expression')
+  ```
+
+Let's have our next endpoint be a page where users can find all the articles that have been written:
+
+  ```Python
+  @app.route('/articles')
+  def articles():
+    # TODO: build articles.html
+    return render_template('articles.html')
+  ```
+
+Notice, I included a `TODO` comment; I did this to remind myself to come back and build this page - and others - after I've mapped out my routes. In Atom, comments are easy: just start typing `todo` and then hit enter. If your file already has an extension (i.e., .py, .js, etc.) then Atom knows what type of syntax is necessary for a comment (e.g., `#` or `//`). The `todo-show` package that we installed earlier allows us to see all of a project's `TODO` tags. Depending on your OS, you can bring this up different ways. This is a great tool to help keep us organized.
+
+Now, go ahead and create the rest of your endpoints (articles/headlines, article, login, logout, profile, create_article) and I'll help you.
