@@ -5,23 +5,23 @@ We'll start by learning how to create a basic flask app that includes all of our
 
 ### Pre-Meeting
 Ensure these tasks are completed by the time we meet. Any questions, email me.
-- [ ] Clone repo
-- [ ] Install libraries
-- [ ] Install ngrok
-- [ ] Install Atom (we'll use this as our editor due to some helpful packages)
-- [ ] Install Atom packages
-- [ ] Configure Atom packages
+- [x] Clone repo
+- [x] Install libraries
+- [x] Install ngrok
+- [x] Install Atom (we'll use this as our editor due to some helpful packages)
+- [x] Install Atom packages
+- [x] Configure Atom packages
 
 
 ### Code-along
 As we work through our session together, check items off like the example below.
 
 - [x] I know how to check things off!
-- [ ] create sub-directories
-- [ ] create `app.py`
-- [ ] imports
-- [ ] endpoint built for index
-- [ ] initial server test
+- [x] create sub-directories
+- [x] create `app.py`
+- [x] imports
+- [x] endpoint built for index
+- [x] initial server test
 - [ ] endpoints built for: articles/headlines, article, login, logout, profile, create_article
 - [ ] create models for users, articles
 - [ ] create db
