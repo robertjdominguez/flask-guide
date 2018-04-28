@@ -116,18 +116,7 @@ Before we actually start building the app during our code-along, I'm going to st
 ## Organizing our application -- TODO TOGETHER
 I like to map out what my app will look like by using comments. We've got a block under a comment called "`Routes`" already. Let's use that to organize the rest of our application's structure. The `flask-snippets` package that we installed helps speed up our development and keeps our syntax clean and consistent. To build an endpoint with this package, start typing `froute` and then hit enter. When you do, the endpoint found below `/` will be in your code:
 
-  ```Python
-  # Routes
-
-
-  @app.route('/')
-  def index():
-      return render_template('index.html')
-
-  @app.route('path')
-  def func_name(foo):
-      return render_template('expression')
-  ```
+![flask-snippets](https://github.com/robertjdominguez/flask-guide/blob/master/main/static/approute.gif)
 
 Let's have our next endpoint be a page where users can find all the articles that have been written. Change the templated endpoint from `froute` to the following:
 
