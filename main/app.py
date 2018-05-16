@@ -11,6 +11,7 @@ from datetime import *
 from random import *
 import time
 from functools import wraps
+from forms import *
 
 # Init the application
 app = Flask(__name__)
@@ -37,6 +38,15 @@ def index():
 
     return render_template('index.html', **locals())
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    if request.method == 'POST': # Step 2 = If POST is the type of request
+        print('Success signing in {}'.format(form.email.data))
+        return redirect(url_for('index'))
+
+    return render_template('login.html', **locals())
 
 @app.route('/articles')
 def articles():
@@ -46,4 +56,4 @@ def articles():
 
 
 # Run the server
-# app.run(port=port)
+app.run(port=port)

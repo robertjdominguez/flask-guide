@@ -9,9 +9,9 @@ conn = sqlite3.connect('database.db')
 c = conn.cursor()
 
 email = 'email@addy.com'
-first_name = 'First'
-last_name = 'Last'
-password = 'superSecretBeforeTheHash'
+first_name = 'Roberto'
+last_name = 'Castro'
+password = 'blahblahblah'
 
 hashed_password = generate_password_hash(password, method='sha256')
 

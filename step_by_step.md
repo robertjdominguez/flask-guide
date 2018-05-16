@@ -364,4 +364,78 @@ sqlite> .mode columns
 sqlite> select * from users;
 ```
 
-The first two commands make it easier to read what the hell is going on; the last will show us all records in the table `Users`.
+The first two commands make it easier to read what the hell is going on; the last will show us all records in the table `Users`. You should get a response to your query with all the information for the user you created earlier.
+
+Now, we need to authenticate the user. In `app.py`, we need to replace the logic under the login table. This will require a couple of steps: first, we'll have to include some more imports from `flask_login` underneath our db configs:
+
+```Python
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
+```
+
+Then, with our `login` route, we'll need to swap out our dummy logic that read the form's email address for an actual authentication process using our db:
+
+```Python
+if request.method == 'POST':
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
+                print("Logged {} {} in".format(current_user.first_name,
+                                               current_user.last_name))
+                return redirect(url_for('index'))
+            else:
+              print("Something is wrong with this login info...")
+              return redirect(url_for('login'))
+        else:
+            print("This isn't a user...")
+            render_template('login.html', **locals())
+
+return render_template('login.html', **locals())
+```
+
+Let's have our authenticated users directed to a page that can only be accessed if they are indeed authenticated. First, we'll create the html file in our `templates` folder. Let's call it `dashboard.html`. Let's build the page like this:
+
+```HTML
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Hello, {{ current_user.first_name }} {{ current_user.last_name }}!</h1>
+  </div>
+</div>
+
+{% endblock %}
+```
+
+Now, we need to create a new route for this endpoint:
+
+```Python
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html', **locals())
+```
+
+Now, let's change the redirect from our earlier login function to navigate to the correct page once authenticated:
+
+```Python
+if request.method == 'POST':
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
+                print("Logged {} {} in".format(current_user.first_name,
+                                               current_user.last_name))
+                return redirect(url_for('index')) # TODO: Change this argument to 'dashboard'
+            else:
+              print("Something is wrong with this login info...")
+              return redirect(url_for('login'))
+        else:
+            print("This isn't a user...")
+            render_template('login.html', **locals())
+
+return render_template('login.html', **locals())
+```

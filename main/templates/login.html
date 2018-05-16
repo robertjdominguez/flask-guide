@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title %} Login {% endblock %} {% block content %} {% import "bootstrap/wtf.html" as wtf %}
+<div class="container" id="login">
+  <!-- This is where we create the form for the login -->
+  <form class="form sign-in" , method="POST" action="/login">
+    {{ form.hidden_tag() }} {{ wtf.form_field(form.email) }}
+    <!-- Password field -->
+    {{ wtf.form_field(form.password) }}
+    <!-- Submit and forgot buttons -->
+    <input class="btn btn-primary" type="submit" value="Login">
+  </form>
+</div>
+
+{% endblock %}
