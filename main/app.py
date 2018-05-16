@@ -23,6 +23,13 @@ db = SQLAlchemy(app)
 app.secret_key = "random_large_int"
 Bootstrap(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
+
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(15))
@@ -42,11 +49,27 @@ def index():
 def login():
     form = LoginForm()
 
-    if request.method == 'POST': # Step 2 = If POST is the type of request
-        print('Success signing in {}'.format(form.email.data))
-        return redirect(url_for('index'))
+    if request.method == 'POST':
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                login_user(user)
+                print("Logged {} {} in".format(current_user.first_name,
+                                               current_user.last_name))
+                return redirect(url_for('dashboard'))
+            else:
+              print("Something is wrong with this login info...")
+              return redirect(url_for('login'))
+        else:
+            print("This isn't a user...")
+            render_template('login.html', **locals())
 
     return render_template('login.html', **locals())
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', **locals())
 
 @app.route('/articles')
 def articles():
@@ -54,6 +77,10 @@ def articles():
     # TODO: articles.html needs to be built
     return render_template('articles.html')
 
+@app.route('/logout')
+@login_required
+def logout():
+    return render_template('index.html')
 
 # Run the server
 app.run(port=port)
