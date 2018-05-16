@@ -22,7 +22,7 @@ As we work through our session together, check items off like the example below.
 - [x] imports
 - [x] endpoint built for index
 - [x] initial server test
-- [ ] endpoints built for: articles/headlines, article, login, logout, profile, create_article
+- [x] endpoints built for: articles/headlines, article, login, logout, profile, create_article
 - [ ] create models for users, articles
 - [ ] create db
 - [ ] create `forms.py` to house web-forms

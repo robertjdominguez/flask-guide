@@ -16,9 +16,20 @@ from functools import wraps
 app = Flask(__name__)
 port = 5000
 
+# DB Configs
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
+app.secret_key = "random_large_int"
+Bootstrap(app)
+
+class Users(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(15))
+    first_name = db.Column(db.String(25))
+    last_name = db.Column(db.String(25))
+    password = db.Column(db.String(80))
+
 # Routes
-
-
 @app.route('/')
 def index():
 
@@ -35,4 +46,4 @@ def articles():
 
 
 # Run the server
-app.run(port=port)
+# app.run(port=port)

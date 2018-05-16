@@ -270,9 +270,10 @@ from wtforms import *
 from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, Email, Length
 from flask_wtf.file import FileField
+from forms import *
 ```
 
-Each form is set up as a class that inherits from `FlaskForm`. Our form for logging in should look like this:
+Each form is set up as a class that inherits from `FlaskForm`. Our form stored in `forms.py` for logging in should look like this:
 
 ```Python
 class LoginForm(FlaskForm):
@@ -341,3 +342,26 @@ Success signing in user@email.com
 127.0.0.1 - - [22/Apr/2018 17:35:39] "POST /login HTTP/1.1" 302 -
 127.0.0.1 - - [22/Apr/2018 17:35:39] "GET / HTTP/1.1" 200 -
 ```
+
+This is great for "logging in" users, but doesn't actually authenticate anything. We need to create a way for users to log in only if they have valid credentials. This could be hard-coded into our application, but this wouldn't be scalable or secure. Earlier, we created the `Users` class in the db...let's actually do something with it now.
+
+I've given you a file called `conn_test.py` that will allow you programmatically add users to your db. Edit the variables in the file to your liking, then run:
+
+```Shell
+$ python conn_test.py
+```
+
+You should get output that alerts you to the addition of your new user. However, let's check it out ourselves:
+
+```Shell
+$ sqlite3 database.db
+```
+Then:
+
+```sql
+sqlite> .headers on
+sqlite> .mode columns
+sqlite> select * from users;
+```
+
+The first two commands make it easier to read what the hell is going on; the last will show us all records in the table `Users`.
