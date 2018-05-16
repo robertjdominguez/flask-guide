@@ -439,3 +439,12 @@ if request.method == 'POST':
 
 return render_template('login.html', **locals())
 ```
+
+To make a page secure, we have to add the `@login_required` decorator to our route. To do this, simply modify the `dashboard` route to look like this:
+
+```Python
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', **locals())
+```
