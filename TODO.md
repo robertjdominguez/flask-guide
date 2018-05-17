@@ -23,10 +23,10 @@ As we work through our session together, check items off like the example below.
 - [x] endpoint built for index
 - [x] initial server test
 - [x] endpoints built for: articles/headlines, article, login, logout, profile, create_article
-- [ ] create models for users, articles
-- [ ] create db
-- [ ] create `forms.py` to house web-forms
-- [ ] login authentication logic created
-- [ ] sample user created and test passed
+- [x] create models for users, articles
+- [x] create db
+- [x] create `forms.py` to house web-forms
+- [x] login authentication logic created
+- [x] sample user created and test passed
 - [ ] sample article posted and test passed
 - [ ] mobile test using ngrok
